@@ -19,6 +19,7 @@ db = SQLAlchemy(app)
 class ApplicationStatus(Enum):
     SUCCESSFUL = "successful"
     REJECT = "reject"
+    PENDING = "pending"
 
 
 # declaring the database table

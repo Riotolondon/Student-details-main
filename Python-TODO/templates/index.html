@@ -1,6 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    /* Add a margin to the top of the student cards container */
+    #studentCards {
+        margin-top: 50px; /* Adjust this value as needed */
+    }
+
+    /* Add a margin to the bottom of the filter controls container */
+    .btn-group {
+        margin-bottom: 30px; /* Adjust this value as needed */
+    }
+
+    /* Adjust the position of the filter controls */
+    .btn-group {
+        position: relative; /* Use relative positioning */
+        top: 35px; /* Move the filter controls up by 20px */
+        left: -90px;
+    }
+</style>
+
 <div class="container">
     <div class="row">
         <!-- Filter Controls -->
@@ -9,7 +28,7 @@
                 <button type="button" class="btn btn-secondary" onclick="filterStudents('all')">All</button>
                 <button type="button" class="btn btn-success" onclick="filterStudents('successful')">Successful</button>
                 <button type="button" class="btn btn-danger" onclick="filterStudents('rejected')">Rejected</button>
-                <button type="button" class="btn btn-warning" onclick="filterStudents('pending')">Pending</button>
+                <button type="button" class="btn btn-warning" onclick="filterStudents('pending')">Pending</button> <!-- Added Pending option -->
             </div>
         </div>
     </div>

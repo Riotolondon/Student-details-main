@@ -1,26 +1,84 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+
+<style>
+    .lowered-container {
+        margin-top: 90px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px; /* Add padding inside the container */
+    }
+
+    .back-icon {
+        position: absolute;
+        top: 55px;
+        left: 110px;
+        color: #007bff;
+    }
+
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px; /* Add space between cards */
+    }
+
+    .card-title {
+        color: #343a40;
+        font-family: 'Roboto', sans-serif; /* Use a modern font */
+        font-weight: 700; /* Bold text for titles */
+    }
+
+    .card-text {
+        color: #495057;
+        font-family: 'Roboto', sans-serif; /* Use a modern font */
+        font-weight: 400; /* Regular text for content */
+        margin-bottom: 10px; /* Add space between text elements */
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        font-family: 'Roboto', sans-serif; /* Use a modern font */
+        font-weight: 700; /* Bold text for buttons */
+    }
+
+    .document h4 {
+        font-family: 'Roboto', sans-serif; /* Use a modern font */
+        font-weight: 700; /* Bold text for headings */
+        margin-bottom: 10px; /* Add space below the heading */
+    }
+</style>
+
+<div class="container lowered-container">
+    <a href="{{ url_for('index', student_id=student.id) }}" class="text-primary back-icon">
+        <i class="fa fa-chevron-circle-left fa-2x"></i>
+    </a>
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-3">
                 <div class="card-body">
                     <h1 class="card-title">{{ student.name }} {{ student.surname }}</h1>
                     <p class="card-text"><b>#{{ student.id }}</b></p>
-                    <p class="card-text">
-                        <a href="{{ url_for('index', student_id=student.id) }}" class="text-primary">
-                            {{ student.name }} {{ student.surname }}
-                        </a>
-                    </p>
-                    <p class="card-text">ID Number: {{ student.id_number }}</p>
-                    <p class="card-text">Email: {{ student.email }}</p>
-                    <p class="card-text">Course: {{ student.course }}</p>
-                    <p class="card-text">Academic Background: {{ student.academic_background }}</p>
-                    <p class="card-text">Experience: {{ student.experience }}</p>
-                    <p class="card-text">Skills: {{ student.skills }}</p>
-                    <p class="card-text">applied: {{ student.created_at }}</p>
+                    <p class="card-text"></p>
 
+                    <!-- Grid View Start -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="card-text">ID Number: {{ student.id_number }}</p>
+                            <p class="card-text">Email: {{ student.email }}</p>
+                            <p class="card-text">Course: {{ student.course }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="card-text">Academic Background: {{ student.academic_background }}</p>
+                            <p class="card-text">Experience: {{ student.experience }}</p>
+                            <p class="card-text">Skills: {{ student.skills }}</p>
+                            <p class="card-text">Applied: {{ student.created_at }}</p>
+                        </div>
+                    </div>
+                    <!-- Grid View End -->
                     <!-- Display the uploaded document -->
                     {% if student.document %}
                     <div class="document">
@@ -30,7 +88,6 @@
                     {% else %}
                     <p class="card-text">No document uploaded.</p>
                     {% endif %}
-
                 </div>
             </div>
         </div>
